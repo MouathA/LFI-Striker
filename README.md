@@ -10,6 +10,7 @@ LFI Striker is a powerful framework designed to detect and exploit Local File In
 * [Install](#install)
 * [Examples](#examples)
 * [Payloads](#payloads)
+* [Recommended](#recommended)
 
 ## Modules
 ```
@@ -51,9 +52,11 @@ Basic install from releases
 
 ## Payloads
 
-> https://raw.githubusercontent.com/capture0x/LFI-FINDER/main/lfi.txt
+> Payloads from -- > https://raw.githubusercontent.com/capture0x/LFI-FINDER/main/lfi.txt
 
+## Recommended
 
+> Use Java 11 to avoid errors.
 
 
 
