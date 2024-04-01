@@ -12,7 +12,7 @@ LFI Striker is a powerful framework designed to detect and exploit Local File In
 * [Payloads](#payloads)
 
 ## Modules
-
+```
   _       _____   ___           ____    _            _   _
  | |     |  ___| |_ _|         / ___|  | |_   _ __  (_) | | __   ___
  | |     | |_     | |   _____  \___ \  | __| | '__| | | | |/ /  / _ \
@@ -24,7 +24,7 @@ LFI Striker is a powerful framework designed to detect and exploit Local File In
 usage: java -jar LFI-Striker.jar -i <input_file_path> [-d <delay_time_ms>]
  `-d,--delay <arg>`   Delay time in milliseconds
  `-i,--input <arg>`   Input file path
-
+```
 ## Install
 
 Basic install from releases
