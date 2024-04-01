@@ -48,7 +48,7 @@ Basic install from releases
 ![1](https://cdn.discordapp.com/attachments/827372282082492427/1224202236859514971/Start.png?ex=661ca22d&is=660a2d2d&hm=127c58957913fd0c17065ba1357272e24724756c2db776a91435e1be3b23ebf5&)
 
 
-[![2](https://cdn.discordapp.com/attachments/836914238923472897/1224191998983012462/Last.png?ex=661c98a4&is=660a23a4&hm=cf15c8fae2c3829dd9631227756f7ffff724e3c5fd0fe89f28fbca78522faca1&)](https://cdn.discordapp.com/attachments/996558083008508014/1077022731352166521/image.png)
+![Screenshot_1](https://github.com/MouathA/LFI-Striker/assets/103407967/4b2bd7ff-ac15-4f54-acf6-4f01afff42a4)
 
 ## Payloads
 
