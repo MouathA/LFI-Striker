@@ -35,7 +35,7 @@ Basic install from releases
 
 ## Examples
 
->First you need to download subfinder and gau for get all domains and parameter
+> Initially, you'll need to download Subfinder and Gau to obtain all domains and parameters for scanning.
  
 ```powershell
 [!] subfinder -d example.com | gau >> domains.txt
