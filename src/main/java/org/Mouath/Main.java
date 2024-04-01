@@ -1,4 +1,5 @@
 package org.Mouath;
+
 import org.apache.commons.cli.*;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -48,23 +49,19 @@ public class Main {
                     List<String> modifiedLines = processUrls(text, patterns, payloads, delayTime);
                     writeTextToFile("output.txt", modifiedLines);
                     System.out.println("\u001B[32m[+] Parameter replacement completed. Output written to output.txt.");
-                    System.out.print("\u001B[0m");
                 } else {
                     System.err.println("\u001B[31m[!] Error reading input text or payloads file.");
-                    System.out.print("\u001B[0m");
                 }
             } else {
                 System.err.println("\u001B[31m[!] Input file path is required. Use -i option.");
                 displayHelp(options);
-                System.out.print("\u001B[0m");
             }
         } catch (ParseException e) {
             System.err.println("\u001B[31m[!] Error parsing command-line arguments: " + e.getMessage());
-            System.out.print("\u001B[0m");
         } catch (IOException e) {
             System.err.println("\u001B[31m[!] Error processing text or payloads: " + e.getMessage());
-            System.out.print("\u001B[0m");
         }
+        resetConsoleColor();
     }
 
     private static void displayHelp(Options options) {
@@ -109,7 +106,6 @@ public class Main {
         for (String line : lines) {
             StringBuilder modifiedLine = new StringBuilder(line);
 
-
             boolean lineMatchesPattern = false;
             for (String pattern : patterns) {
                 if (line.contains(pattern)) {
@@ -118,22 +114,23 @@ public class Main {
                 }
             }
 
-
             if (lineMatchesPattern) {
-                for (String pattern : patterns) {
-                    String regex = Pattern.quote(pattern) + "([^=&]+)";
-                    Matcher matcher = Pattern.compile(regex).matcher(line);
-                    while (matcher.find()) {
-                        String parameter = matcher.group(1);
-                        for (String lfiPayload : payloads) {
+                for (String lfiPayload : payloads) {
+                    StringBuilder tempLine = new StringBuilder(line);
+                    for (String pattern : patterns) {
+                        String regex = Pattern.quote(pattern) + "([^=&]+)";
+                        Matcher matcher = Pattern.compile(regex).matcher(tempLine);
+                        while (matcher.find()) {
+                            String parameter = matcher.group(1);
                             int startIndex = matcher.start(1);
                             int endIndex = matcher.end(1);
-                            if (startIndex >= 0 && endIndex <= modifiedLine.length()) {
-                                modifiedLine.replace(startIndex, endIndex, lfiPayload);
-                                String urlWithPayload = modifiedLine.toString();
+                            if (startIndex >= 0 && endIndex <= tempLine.length()) {
+                                tempLine.replace(startIndex, endIndex, lfiPayload);
+                                String urlWithPayload = tempLine.toString();
                                 if (isValidUrl(urlWithPayload) && lfiPayloadWorks(urlWithPayload)) {
                                     modifiedLines.add("[+] LFI vulnerability detected with payload: " + urlWithPayload);
                                     System.out.println("\u001B[32m[+] LFI vulnerability detected with payload: " + urlWithPayload);
+                                    break;
                                 } else {
                                     try {
                                         Thread.sleep(delayTime);
@@ -150,30 +147,14 @@ public class Main {
                 }
             } else {
                 modifiedLines.add("[!] Line does not match any specified pattern. Skipping: " + line);
-
                 System.out.println("\u001B[33m[!] Line does not match any specified pattern. Skipping: " + line);
             }
         }
 
-
         System.out.println("\u001B[36m[+] Processing completed. Exiting program.");
-        resetConsoleColor();
-
         return modifiedLines;
     }
 
-    private static void resetConsoleColor() {
-        System.out.print("\u001B[0m");
-        try {
-
-            Process process = Runtime.getRuntime().exec("cmd /c exit");
-            process.destroy();
-
-        } catch (IOException e) {
-            System.err.println("\u001B[31m[!] Error exiting the program: " + e.getMessage());
-            System.out.print("\u001B[0m");
-        }
-    }
 
     private static boolean isValidUrl(String url) {
         try {
@@ -185,7 +166,6 @@ public class Main {
         }
     }
 
-
     private static boolean lfiPayloadWorks(String url) {
         try {
             Document doc = Jsoup.connect(url).get();
@@ -195,5 +175,9 @@ public class Main {
             System.err.println("\u001B[31m[!] Error fetching webpage content: " + e.getMessage());
             return false;
         }
+    }
+
+    private static void resetConsoleColor() {
+        System.out.print("\u001B[0m");
     }
 }
