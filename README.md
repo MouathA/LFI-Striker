@@ -30,7 +30,7 @@ usage: java -jar LFI-Striker.jar -i <input_file_path> [-d <delay_time_ms>]
 
 Basic install from releases
 
-You can download the latest release of ParamFinder from the [GitHub repository](https://github.com/MouathA/LFI-Striker/releases).
+You can download the latest release of LFI-Striker from the [GitHub repository](https://github.com/MouathA/LFI-Striker/releases).
 
 
 ## Examples
