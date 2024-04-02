@@ -44,7 +44,8 @@ You can download the latest release of ParamFinder from the [GitHub repository](
 [!] java -jar LFI-Strike.jar -i domains.txt -d 1000
 
 ```
-![1](https://cdn.discordapp.com/attachments/827372282082492427/1224202236859514971/Start.png?ex=661ca22d&is=660a2d2d&hm=127c58957913fd0c17065ba1357272e24724756c2db776a91435e1be3b23ebf5&)
+
+![Start](https://github.com/MouathA/LFI-Striker/assets/103407967/9c6fdc19-091a-4c52-87de-7297d7409642)
 
 
 ![Screenshot_1](https://github.com/MouathA/LFI-Striker/assets/103407967/4b2bd7ff-ac15-4f54-acf6-4f01afff42a4)
