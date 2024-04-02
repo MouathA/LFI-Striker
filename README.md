@@ -30,15 +30,14 @@ usage: java -jar LFI-Striker.jar -i <input_file_path> [-d <delay_time_ms>]
 
 Basic install from releases
 
-[https://github.com/MouathA/LFI-Strike/releases]
+You can download the latest release of ParamFinder from the [GitHub repository](https://github.com/MouathA/LFI-Striker/releases).
 
 
 ## Examples
 
-> Initially, you'll need to download Subfinder and Gau to obtain all domains and parameters for scanning.
+> Initially, you'll need to download [ParamFinder](https://github.com/MouathA/ParamFinder/releases) to obtain all domains and parameters for scanning.
  
 ```powershell
-[!] subfinder -d example.com | gau >> domains.txt
 
 [!] java -jar LFI-Strike.jar -i domains.txt 
 
